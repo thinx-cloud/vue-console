@@ -20,6 +20,7 @@ import AnimatedNumber from "animated-number-vue";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_usaHigh from "@amcharts/amcharts4-geodata/usaHigh";
+import am4geodata_czHigh from "@amcharts/amcharts4-geodata/czechRepublicHigh";
 
 import cities from './mock';
 
@@ -45,7 +46,8 @@ export default {
   },
   mounted() {
     let map = am4core.create(this.$refs.map, am4maps.MapChart);
-    map.geodata = am4geodata_usaHigh;
+    //map.geodata = am4geodata_usaHigh;
+    map.geodata = am4geodata_czHigh;
     map.projection = new am4maps.projections.AlbersUsa();
     map.chartContainer.wheelable = false;
     map.seriesContainer.draggable = false;

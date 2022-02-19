@@ -9,7 +9,7 @@
     </transition>
   </div>
   <footer class="contentFooter">
-    Light Blue Vue Admin Dashboard Template - Made by <a href="https://flatlogic.com" target="_blank">Flatlogic</a>
+    Light Blue Vue Admin Dashboard Template - Made by <a href="https://flatlogic.com" target="_blank">Flatlogic</a> | modified for <a :href="projectUrl" target="_blank">THiNX Cloud</a>
   </footer>
 </div>
 </template>
@@ -37,6 +37,7 @@ export default {
     }),
   },
   created() {
+    // empty
   },
   mounted() {
     this.$refs.content.addEventListener('animationend', () => {

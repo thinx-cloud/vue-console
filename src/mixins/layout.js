@@ -4,7 +4,7 @@ export default {
   data: () => {
     return {
       appConfig: {
-        colors: config.colors
+        colors: config.colors,
       }
     }
   },

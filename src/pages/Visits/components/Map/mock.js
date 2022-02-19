@@ -1,5 +1,15 @@
 export default [
   {
+    latitude: 50.08804,
+    longitude: 14.42076,
+    size: 6,
+    tooltip: 'Prague',
+  }
+]
+
+/*
+,
+  {
     latitude: 40.717079,
     longitude: -74.00116,
     size: 6,
@@ -65,4 +75,4 @@ export default [
     size: 6,
     tooltip: 'Lakewood Mutual',
   }
-]
+  */
