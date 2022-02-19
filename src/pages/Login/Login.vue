@@ -3,21 +3,22 @@
     <b-container>
       <Widget class="widget-auth mx-auto" title="<h3 class='mt-0'>Login to your Web App</h3>" customHeader>
         <p class="widget-auth-info">
-          Use your email to sign in.
+          Use your username to sign in.
         </p>
         <form class="mt" @submit.prevent="login">
           <b-alert class="alert-sm" variant="danger" :show="!!errorMessage">
             {{errorMessage}}
           </b-alert>
-          <b-form-group label="Email" label-for="email">
+          <b-form-group label="Username" label-for="username">
             <b-input-group>
               <b-input-group-text slot="prepend"><i class="la la-user text-white"></i></b-input-group-text>
-              <input id="email"
-                     ref="email"
+              <input id="username"
+                     ref="username"
                      class="form-control input-transparent pl-3"
-                     type="email"
+                     type="text"
                      required
-                     placeholder="Email"/>
+                     placeholder="Username"
+                     autocomplete="username"/>
             </b-input-group>
           </b-form-group>
           <b-form-group label="Password" label-for="password">
@@ -28,7 +29,8 @@
                      class="form-control input-transparent pl-3"
                      type="password"
                      required
-                     placeholder="Password"/>
+                     placeholder="Password"
+                     autocomplete="current-password"/>
             </b-input-group>
           </b-form-group>
           <div class="bg-widget auth-widget-footer">
@@ -64,6 +66,7 @@
 
 <script>
 import Widget from '@/components/Widget/Widget';
+import { mapMutations, mapGetters } from "vuex";
 
 export default {
   name: 'LoginPage',
@@ -71,23 +74,54 @@ export default {
   data() {
     return {
       errorMessage: null,
+      apiBase: process.env.VUE_APP_THINX_API_BASE_URL,
+      username: '',
+      password: '',
     };
   },
+  computed: {
+    ...mapGetters('auth', ["isLoggedIn"])
+  },
   methods: {
-    login() {
-      const email = this.$refs.email.value;
+    ...mapMutations(["setUser", "setToken"]),
+    async login(e) {
+      e.preventDefault();
+      const username = this.$refs.username.value;
       const password = this.$refs.password.value;
+      
+      try {
+        const response = await fetch(this.apiBase + '/login', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        });
 
-      if (email.length !== 0 && password.length !== 0) {
-        window.localStorage.setItem('authenticated', true);
+        const { user, token } = await response.json();
+        this.setUser(user);
+        this.setToken(token);
         this.$router.push('/app/dashboard');
+      } catch (e) {
+          this.$error(e, 'ERROR');
       }
+      
     },
   },
   created() {
-    if (window.localStorage.getItem('authenticated') === 'true') {
+    if (this.isLoggedIn === 'true') {
       this.$router.push('/app/dashboard');
     }
+    /*
+    this.$log('TEST VUE-CONSOLES LOG', 'LOG');
+    this.$info('TEST VUE-CONSOLES LOG', 'INFO');
+    this.$warn('TEST VUE-CONSOLES LOG', 'WARN');
+    this.$error('TEST VUE-CONSOLES LOG', 'ERROR');
+    this.$debug('TEST VUE-CONSOLES LOG', 'DEBUG');
+    */
   },
 };
 </script>

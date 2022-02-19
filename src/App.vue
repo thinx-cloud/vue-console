@@ -3,12 +3,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: 'App',
+  computed: {
+    ...mapGetters('auth', ["isLoggedIn"])
+  },
   created() {
     const currentPath = this.$router.history.current.path;
 
-    if (window.localStorage.getItem('authenticated') === 'false') {
+    if (this.isLoggedIn === 'false') {
       this.$router.push('/login');
     }
 

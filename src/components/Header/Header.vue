@@ -131,7 +131,7 @@ export default {
     }),
   },
   methods: {
-    ...mapActions('layout', ['switchSidebar', 'changeSidebarActive']),
+    ...mapActions('layout', ['switchSidebar', 'changeSidebarActive'], 'logout'),
     switchSidebarMethod() {
       if (!this.sidebarClose) {
         this.switchSidebar(true);
@@ -144,7 +144,7 @@ export default {
       }
     },
     logout() {
-      window.localStorage.setItem('authenticated', false);
+      this.doLogout();
       this.$router.push('/login');
     },
   },
