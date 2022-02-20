@@ -35,6 +35,9 @@ export default {
     ...mapState('layout', {
       sidebarClose: state => state.sidebarClose,
     }),
+    projectUrl() {
+      return process.env.VUE_APP_THINX_PROJECT_URL;
+    }
   },
   created() {
     // empty

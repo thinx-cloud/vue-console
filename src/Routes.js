@@ -44,7 +44,7 @@ export default new Router({
         },
         {
           path: 'tables',
-          name: 'Typography',
+          name: 'Tables',
           component: Tables,
         },
         {
