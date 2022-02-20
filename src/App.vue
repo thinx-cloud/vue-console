@@ -12,7 +12,7 @@ export default {
   created() {
     const currentPath = this.$router.history.current.path;
 
-    if (this.isLoggedIn === 'false') {
+    if (this.isLoggedIn === false) {
       this.$router.push('/login');
     }
 

@@ -10,7 +10,7 @@
     <a class="generator-link navTitle" target="_blank" href="https://flatlogic.com/generator">Generate App</a>
 
     <ul class="nav">
-      <h5 class="navTitle">APP</h5>
+      <h5 class="navTitle">THiNX</h5>
       <NavLink
         :activeItem="activeItem"
         header="Dashboard"
@@ -18,6 +18,48 @@
         iconName="flaticon-home-3"
         index="dashboard"
         isHeader
+      />
+      <NavLink
+        header="Devices"
+        link="/app/devices"
+        iconName="flaticon-list-3"
+        index="devices"
+        isHeader
+      />
+      <h5 class="navTitle">ACCOUNT</h5>
+      <NavLink
+        header="API Keys"
+        link="/app/apikeys"
+        iconName="flaticon-list-3"
+        index="apikeys"
+        isHeader
+      />
+      <NavLink
+        header="Sources"
+        link="/app/sources"
+        iconName="flaticon-list-3"
+        index="sources"
+        isHeader
+      />
+      <NavLink
+        header="History"
+        link="/app/history"
+        iconName="flaticon-list-3"
+        index="history"
+        isHeader
+      />
+      <NavLink
+        :activeItem="activeItem"
+        header="Settings"
+        link="/app/settings"
+        iconName="flaticon-network-1"
+        index="settings"
+        :childrenLinks="[
+          { header: 'Deploy Keys', link: '/app/components/deploykeys' },
+          { header: 'Transformers', link: '/app/components/transformers' },
+          { header: 'Environment Globals', link: '/app/components/enviros' },
+          { header: 'Mesh Channels', link: '/app/components/channels' },
+        ]"
       />
       <h5 class="navTitle">TEMPLATE</h5>
       <NavLink

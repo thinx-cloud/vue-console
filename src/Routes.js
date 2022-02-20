@@ -37,6 +37,48 @@ export default new Router({
           name: 'Dashboard',
           component: Dashboard,
         },
+        // THINX
+        {
+          path: 'devices',
+          name: 'Devices',
+          component: ErrorPage,
+        },
+        {
+          path: 'apikeys',
+          name: 'API Keys',
+          component: ErrorPage,
+        },
+        {
+          path: 'sources',
+          name: 'Sources',
+          component: ErrorPage,
+        },
+        {
+          path: 'history',
+          name: 'History',
+          component: ErrorPage,
+        },
+        {
+          path: 'components/deploykeys',
+          name: 'Deploy Keys',
+          component: ErrorPage,
+        },
+        {
+          path: 'components/transformers',
+          name: 'Transformers',
+          component: ErrorPage,
+        },
+        {
+          path: 'components/enviros',
+          name: 'Environmental GLobals',
+          component: ErrorPage,
+        },
+        {
+          path: 'components/channels',
+          name: 'Mesh Channels',
+          component: ErrorPage,
+        },
+        // THEME
         {
           path: 'typography',
           name: 'Typography',

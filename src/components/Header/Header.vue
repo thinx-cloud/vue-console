@@ -131,7 +131,8 @@ export default {
     }),
   },
   methods: {
-    ...mapActions('layout', ['switchSidebar', 'changeSidebarActive'], 'logout'),
+    ...mapActions('layout', ['switchSidebar', 'changeSidebarActive']),
+    ...mapActions('auth', ['doLogout']),
     switchSidebarMethod() {
       if (!this.sidebarClose) {
         this.switchSidebar(true);

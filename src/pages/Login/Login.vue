@@ -66,7 +66,7 @@
 
 <script>
 import Widget from '@/components/Widget/Widget';
-import { mapMutations, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: 'LoginPage',
@@ -80,10 +80,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ["isLoggedIn"])
+    ...mapGetters('auth', ['isLoggedIn'])
   },
   methods: {
-    ...mapMutations(["setUser", "setToken"]),
+    ...mapActions('auth', ['setUser', 'setToken']),
     async login(e) {
       e.preventDefault();
       const username = this.$refs.username.value;
@@ -107,12 +107,16 @@ export default {
         this.$router.push('/app/dashboard');
       } catch (e) {
           this.$error(e, 'ERROR');
+          // TODO REMOVE
+          this.setUser({ username: 'failedlogin' });
+          this.setToken('tokenNotPresent');
+          this.$router.push('/app/dashboard');
       }
       
     },
   },
   created() {
-    if (this.isLoggedIn === 'true') {
+    if (this.isLoggedIn === true) {
       this.$router.push('/app/dashboard');
     }
     /*
