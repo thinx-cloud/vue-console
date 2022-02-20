@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start": "node server.js",
-    "migratesass": "sass-migrator division ./src/**/*.scss"
+    "migratesass": "sass-migrator module --verbose ./src/**/*.scss"
   },
   "dependencies": {
     "@amcharts/amcharts4": "^4.10.13",

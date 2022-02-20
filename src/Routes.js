@@ -44,7 +44,7 @@ export default new Router({
         },
         {
           path: 'tables',
-          name: 'Typography',
+          name: 'Tables',
           component: Tables,
         },
         {
@@ -71,7 +71,7 @@ export default new Router({
     },
     {
       path: '*',
-      name: 'Error',
+      name: 'Unknown',
       component: ErrorPage,
     }
   ],

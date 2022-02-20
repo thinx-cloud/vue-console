@@ -301,7 +301,7 @@
             </table>
           </div>
           <div class="widget-body mt-xlg chart-overflow-bottom">
-            <area-chart class="area-chart" height="100px" :options="{legend: false, scales: {yAxes: [{display: false}], xAxes: [{display: false}]}}"  :chart-data="dataCollection"></area-chart>
+            <area-chart class="area-chart" :height="100" :options="{legend: false, scales: {yAxes: [{display: false}], xAxes: [{display: false}]}}"  :chart-data="dataCollection"></area-chart>
           </div>
         </Widget>
       </b-col>
@@ -349,7 +349,22 @@ export default {
         }
       },
       checkedArr: [false, false, false],
-      dataCollection: null,
+      dataCollection: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#1870DC',
+            borderColor: 'transparent',
+            data: []
+          }, {
+            label: 'Data Two',
+            backgroundColor: '#F45722',
+            borderColor: 'transparent',
+            data: []
+          }
+        ]
+      },
     };
   },
   methods: {
